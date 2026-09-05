@@ -27,7 +27,7 @@ Output format:
 - Confidence: high / medium / low
 - Exceptions: unresolved items"""
 
-def get_transaction_agent(tools: List[Any] = None, model_name: str = "gemini-2.0-flash"):
+def get_transaction_agent(tools: List[Any] = None, model_name: str = "gemini-3.6-flash"):
     api_key = os.getenv("GOOGLE_API_KEY")
     llm = ChatGoogleGenerativeAI(
         model=model_name,

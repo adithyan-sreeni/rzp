@@ -21,7 +21,7 @@ This is NOT a chatbot demo. The eval harness with honest numbers is the differen
 
 | Layer | Choice | Reason |
 |---|---|---|
-| LLM | Gemini Flash 2.0 (`gemini-2.0-flash`) | Free tier, cheap at scale, fast |
+| LLM | Gemini Flash 3.6 (`gemini-3.6-flash`) | Free tier, cheap at scale, fast |
 | Agent Framework | LangGraph | Extends LangChain (already familiar), native multi-agent support |
 | MCP Integration | `langchain-mcp-adapters` | Bridges LangGraph with Razorpay MCP server |
 | Razorpay Data | Razorpay Remote MCP Server | Official, hosted, no infrastructure needed |

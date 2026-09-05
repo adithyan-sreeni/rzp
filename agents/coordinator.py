@@ -33,7 +33,7 @@ Respond strictly with a JSON object matching this schema:
 
 Do not add explanation. Do not answer the question. Just route."""
 
-def get_coordinator_model(model_name: str = "gemini-2.0-flash"):
+def get_coordinator_model(model_name: str = "gemini-3.6-flash"):
     api_key = os.getenv("GOOGLE_API_KEY")
     return ChatGoogleGenerativeAI(
         model=model_name,
@@ -41,7 +41,7 @@ def get_coordinator_model(model_name: str = "gemini-2.0-flash"):
         temperature=0.0
     )
 
-def route_question(question: str, model_name: str = "gemini-2.0-flash") -> Dict[str, Any]:
+def route_question(question: str, model_name: str = "gemini-3.6-flash") -> Dict[str, Any]:
     llm = get_coordinator_model(model_name)
     
     prompt = f"{COORDINATOR_SYSTEM_PROMPT}\n\nQuestion: {question}"

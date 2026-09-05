@@ -12,7 +12,7 @@ A multi-agent AI system built with **LangGraph**, **LangChain**, and **Razorpay 
         ↓
 [Streamlit UI]
         ↓
-[Coordinator Agent - Gemini Flash 2.0]
+[Coordinator Agent - Gemini Flash 3.6]
   "route only, never answer"
         ↓
    ┌────┴────┐
@@ -33,7 +33,7 @@ A multi-agent AI system built with **LangGraph**, **LangChain**, and **Razorpay 
 
 ## 🛠️ Tech Stack
 
-- **LLM:** Gemini Flash 2.0 (`gemini-2.0-flash`) via `langchain-google-genai`
+- **LLM:** Gemini Flash 3.6 (`gemini-3.6-flash`) via `langchain-google-genai`
 - **Agent Framework:** LangGraph (`StateGraph`)
 - **MCP Adapter:** `langchain-mcp-adapters`
 - **MCP Endpoint:** Razorpay Remote MCP Server (`https://mcp.razorpay.com/mcp`)
