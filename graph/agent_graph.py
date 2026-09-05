@@ -90,7 +90,7 @@ async def settlement_node(state: AgentState) -> Dict[str, Any]:
         SystemMessage(content=SETTLEMENT_SYSTEM_PROMPT),
         HumanMessage(content=f"Context: {context}\nQuestion: {question}"),
     ]
-    response = llm_with_tools.invoke(messages)
+    response = await llm_with_tools.ainvoke(messages)
 
     # Tool-call loop
     tool_map = {t.name: t for t in tools}
@@ -101,7 +101,7 @@ async def settlement_node(state: AgentState) -> Dict[str, Any]:
             tool_args = tc["args"]
             if tool_name in tool_map:
                 try:
-                    tool_output = tool_map[tool_name].invoke(tool_args)
+                    tool_output = await tool_map[tool_name].ainvoke(tool_args)
                 except Exception as e:
                     tool_output = json.dumps({"error": str(e)})
             else:
@@ -109,7 +109,7 @@ async def settlement_node(state: AgentState) -> Dict[str, Any]:
             messages.append(
                 ToolMessage(content=str(tool_output), tool_call_id=tc["id"])
             )
-        response = llm_with_tools.invoke(messages)
+        response = await llm_with_tools.ainvoke(messages)
 
     return {
         "settlement_answer": _extract_text(response.content),
@@ -135,7 +135,7 @@ async def transaction_node(state: AgentState) -> Dict[str, Any]:
         SystemMessage(content=TRANSACTION_SYSTEM_PROMPT),
         HumanMessage(content=f"Context: {context}\nQuestion: {question}"),
     ]
-    response = llm_with_tools.invoke(messages)
+    response = await llm_with_tools.ainvoke(messages)
 
     tool_map = {t.name: t for t in tools}
     while getattr(response, "tool_calls", None):
@@ -145,7 +145,7 @@ async def transaction_node(state: AgentState) -> Dict[str, Any]:
             tool_args = tc["args"]
             if tool_name in tool_map:
                 try:
-                    tool_output = tool_map[tool_name].invoke(tool_args)
+                    tool_output = await tool_map[tool_name].ainvoke(tool_args)
                 except Exception as e:
                     tool_output = json.dumps({"error": str(e)})
             else:
@@ -153,7 +153,7 @@ async def transaction_node(state: AgentState) -> Dict[str, Any]:
             messages.append(
                 ToolMessage(content=str(tool_output), tool_call_id=tc["id"])
             )
-        response = llm_with_tools.invoke(messages)
+        response = await llm_with_tools.ainvoke(messages)
 
     return {
         "transaction_answer": _extract_text(response.content),

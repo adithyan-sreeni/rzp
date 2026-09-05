@@ -55,9 +55,34 @@ with col_main:
             graph = build_graph()
             
             st.write("2. Routing to Specialist Agent(s) & querying MCP / data sources...")
+            
+            async def run_workflow():
+                result_state = None
+                async for event in graph.astream_events({"question": question}, version="v2"):
+                    kind = event["event"]
+                    name = event.get("name", "")
+                    
+                    if kind == "on_chat_model_end":
+                        # Attempt to get text output (thinking) from model before it makes tool calls
+                        output = event.get("data", {}).get("output", None)
+                        if output and hasattr(output, "content") and output.content:
+                            st.markdown(f"🧠 **Agent Thinking:**\n\n{output.content}")
+                            
+                    elif kind == "on_tool_start":
+                        args = event['data'].get('input', {})
+                        st.info(f"🛠️ **Tool Call**: `{name}`\n\n```json\n{args}\n```")
+                        
+                    elif kind == "on_tool_end":
+                        output = event['data'].get('output', {})
+                        st.success(f"✅ **Tool Ended**: `{name}`\n\n```json\n{output}\n```")
+                        
+                    elif kind == "on_chain_end" and name == "LangGraph":
+                        result_state = event["data"]["output"]
+                return result_state
+            
             loop = asyncio.new_event_loop()
             asyncio.set_event_loop(loop)
-            result = loop.run_until_complete(graph.ainvoke({"question": question}))
+            result = loop.run_until_complete(run_workflow())
             
             st.write("3. Synthesizing citations & confidence scoring...")
             status_container.update(label="Analysis Complete!", state="complete", expanded=False)
@@ -107,6 +132,17 @@ with col_main:
         exceptions = result.get("exceptions", [])
         if exceptions:
             st.error(f"Exceptions / Unresolved: {', '.join(exceptions)}")
+
+        st.divider()
+        with st.expander("🔍 Detailed Execution State (JSON Log)"):
+            # Clean up the messages list for JSON serialization (LangChain objects might not be JSON serializable out of the box)
+            # but we can just use string representation or dictionary if it fails
+            import json
+            try:
+                # result is an AgentState dict
+                st.json(result)
+            except Exception as e:
+                st.write(str(result))
 
 with col_detail:
     st.subheader("💡 Sample Test Queries")
