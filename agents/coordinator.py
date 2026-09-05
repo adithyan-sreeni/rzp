@@ -1,8 +1,11 @@
 import json
 import os
 from typing import Dict, Any, Literal
+from dotenv import load_dotenv
 from langchain_google_genai import ChatGoogleGenerativeAI
 from pydantic import BaseModel, Field
+
+load_dotenv()
 
 class RoutingDecision(BaseModel):
     route: Literal["settlement_agent", "transaction_agent", "both"] = Field(

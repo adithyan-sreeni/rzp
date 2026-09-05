@@ -1,7 +1,10 @@
 import os
 from typing import List, Dict, Any
+from dotenv import load_dotenv
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import SystemMessage, HumanMessage
+
+load_dotenv()
 
 SETTLEMENT_SYSTEM_PROMPT = """You are a settlement analyst agent for Razorpay merchants.
 You have access to tools that fetch settlement records and reconciliation data.

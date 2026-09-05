@@ -1,6 +1,9 @@
 import os
 from typing import List, Dict, Any
+from dotenv import load_dotenv
 from langchain_google_genai import ChatGoogleGenerativeAI
+
+load_dotenv()
 
 TRANSACTION_SYSTEM_PROMPT = """You are a transaction analyst agent for Razorpay merchants.
 You have access to tools that fetch individual payment records and order details.

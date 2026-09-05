@@ -1,4 +1,10 @@
 import os
+import sys
+
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
+
 import logging
 from typing import List, Any
 from tools.synthetic_tools import get_synthetic_settlements, get_synthetic_payments, get_synthetic_settlement_recon
