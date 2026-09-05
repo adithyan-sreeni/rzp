@@ -43,6 +43,10 @@ async def get_all_settlement_tools() -> Tuple[List[Any], str]:
             "Set USE_SYNTHETIC=true to use synthetic fallback data."
         )
 
+    # Inject custom tool for calculating exact gross amounts and platform fees
+    from tools.custom_tools import get_settlement_gross_details
+    mcp_tools.append(get_settlement_gross_details)
+
     logger.info(f"USE_SYNTHETIC=false — using {len(mcp_tools)} live MCP settlement tools.")
     return mcp_tools, "live_mcp"
 
