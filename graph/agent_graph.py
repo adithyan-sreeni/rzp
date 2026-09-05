@@ -28,6 +28,26 @@ class AgentState(TypedDict):
     exceptions: List[str]
     messages: List[Any]
 
+def _extract_text(content: Any) -> str:
+    """
+    Safely coerce LangChain response content to a plain string.
+    Gemini models with bound tools may return content as a list of content blocks
+    (e.g. [{'type': 'text', 'text': '...'}]) instead of a plain string.
+    """
+    if isinstance(content, str):
+        return content
+    if isinstance(content, list):
+        parts = []
+        for block in content:
+            if isinstance(block, str):
+                parts.append(block)
+            elif isinstance(block, dict):
+                parts.append(block.get("text", ""))
+            else:
+                parts.append(str(block))
+        return " ".join(parts).strip()
+    return str(content) if content is not None else ""
+
 def coordinator_node(state: AgentState) -> Dict[str, Any]:
     question = state.get("question", "")
     routing_result = route_question(question)
@@ -42,8 +62,6 @@ async def settlement_node(state: AgentState) -> Dict[str, Any]:
     context = state.get("context", "")
     tools = await get_all_settlement_tools()
     llm_with_tools = get_settlement_agent(tools=tools)
-    
-    prompt = f"{SETTLEMENT_SYSTEM_PROMPT}\n\nContext extracted by coordinator: {context}\nQuestion: {question}"
     
     # Execute agent call with tool execution loop if needed
     messages = [SystemMessage(content=SETTLEMENT_SYSTEM_PROMPT), HumanMessage(content=f"Context: {context}\nQuestion: {question}")]
@@ -66,7 +84,7 @@ async def settlement_node(state: AgentState) -> Dict[str, Any]:
         response = llm_with_tools.invoke(messages)
         
     return {
-        "settlement_answer": response.content
+        "settlement_answer": _extract_text(response.content)
     }
 
 async def transaction_node(state: AgentState) -> Dict[str, Any]:
@@ -95,12 +113,12 @@ async def transaction_node(state: AgentState) -> Dict[str, Any]:
         response = llm_with_tools.invoke(messages)
         
     return {
-        "transaction_answer": response.content
+        "transaction_answer": _extract_text(response.content)
     }
 
 def merge_node(state: AgentState) -> Dict[str, Any]:
-    settlement_ans = state.get("settlement_answer", "").strip()
-    transaction_ans = state.get("transaction_answer", "").strip()
+    settlement_ans = _extract_text(state.get("settlement_answer", "")).strip()
+    transaction_ans = _extract_text(state.get("transaction_answer", "")).strip()
     
     if settlement_ans and transaction_ans:
         final = f"### Settlement Analysis\n{settlement_ans}\n\n### Transaction Analysis\n{transaction_ans}"
