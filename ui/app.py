@@ -66,7 +66,21 @@ with col_main:
                         # Attempt to get text output (thinking) from model before it makes tool calls
                         output = event.get("data", {}).get("output", None)
                         if output and hasattr(output, "content") and output.content:
-                            st.markdown(f"🧠 **Agent Thinking:**\n\n{output.content}")
+                            content = output.content
+                            text_to_show = ""
+                            if isinstance(content, list):
+                                parts = []
+                                for block in content:
+                                    if isinstance(block, str):
+                                        parts.append(block)
+                                    elif isinstance(block, dict) and "text" in block:
+                                        parts.append(block["text"])
+                                text_to_show = " ".join(parts)
+                            elif isinstance(content, str):
+                                text_to_show = content
+                                
+                            if text_to_show.strip():
+                                st.markdown(f"🧠 **Agent Thinking:**\n\n{text_to_show}")
                             
                     elif kind == "on_tool_start":
                         args = event['data'].get('input', {})
