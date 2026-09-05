@@ -64,14 +64,25 @@ with col_main:
             
         st.divider()
         st.subheader("Analysis Response")
-        
+
+        # ── Data Source Banner ── shown BEFORE the answer, never hidden ──
+        data_source = result.get("data_source", "unknown")
+        if data_source == "live_mcp":
+            st.success("🟢 **Data Source: Live Razorpay MCP** — answer is based on your real account data")
+        elif data_source == "synthetic":
+            st.warning("🟡 **Data Source: Synthetic Fallback** — answer is based on generated test data, NOT your real Razorpay account")
+        elif data_source == "error":
+            st.error("🔴 **Data Source: Error** — could not connect to Razorpay MCP. Check your credentials or set USE_SYNTHETIC=true")
+        else:
+            st.info(f"ℹ️ Data Source: {data_source}")
+
         # Display response
         st.markdown(result.get("final_answer", ""))
-        
+
         # Display Metadata
         st.divider()
         m_col1, m_col2, m_col3 = st.columns(3)
-        
+
         with m_col1:
             conf = result.get("confidence", "low").upper()
             if conf == "HIGH":
