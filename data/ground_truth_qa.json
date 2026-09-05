@@ -1,0 +1,350 @@
+[
+  {
+    "id": "q001",
+    "question": "Why are the fees higher for settlement setl_000020?",
+    "expected_answer_keywords": [
+      "fee",
+      "rate",
+      "5%",
+      "deduction",
+      "surcharge"
+    ],
+    "relevant_record_ids": [
+      "setl_000020"
+    ],
+    "category": "deduction_explanation",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q002",
+    "question": "Why are the fees higher for settlement setl_000032?",
+    "expected_answer_keywords": [
+      "fee",
+      "rate",
+      "5%",
+      "deduction",
+      "surcharge"
+    ],
+    "relevant_record_ids": [
+      "setl_000032"
+    ],
+    "category": "deduction_explanation",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q003",
+    "question": "Why are the fees higher for settlement setl_000034?",
+    "expected_answer_keywords": [
+      "fee",
+      "rate",
+      "5%",
+      "deduction",
+      "surcharge"
+    ],
+    "relevant_record_ids": [
+      "setl_000034"
+    ],
+    "category": "deduction_explanation",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q004",
+    "question": "Why are the fees higher for settlement setl_000040?",
+    "expected_answer_keywords": [
+      "fee",
+      "rate",
+      "5%",
+      "deduction",
+      "surcharge"
+    ],
+    "relevant_record_ids": [
+      "setl_000040"
+    ],
+    "category": "deduction_explanation",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q005",
+    "question": "Why are the fees higher for settlement setl_000041?",
+    "expected_answer_keywords": [
+      "fee",
+      "rate",
+      "5%",
+      "deduction",
+      "surcharge"
+    ],
+    "relevant_record_ids": [
+      "setl_000041"
+    ],
+    "category": "deduction_explanation",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q006",
+    "question": "What is the status and UTR number of settlement setl_000001?",
+    "expected_answer_keywords": [
+      "processed",
+      "HDFC2025090000001"
+    ],
+    "relevant_record_ids": [
+      "setl_000001"
+    ],
+    "category": "settlement_status",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q007",
+    "question": "What is the status and UTR number of settlement setl_000002?",
+    "expected_answer_keywords": [
+      "processed",
+      "HDFC2025090000002"
+    ],
+    "relevant_record_ids": [
+      "setl_000002"
+    ],
+    "category": "settlement_status",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q008",
+    "question": "What is the status and UTR number of settlement setl_000004?",
+    "expected_answer_keywords": [
+      "processed",
+      "HDFC2025090000004"
+    ],
+    "relevant_record_ids": [
+      "setl_000004"
+    ],
+    "category": "settlement_status",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q009",
+    "question": "What is the status and UTR number of settlement setl_000005?",
+    "expected_answer_keywords": [
+      "processed",
+      "HDFC2025090000005"
+    ],
+    "relevant_record_ids": [
+      "setl_000005"
+    ],
+    "category": "settlement_status",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q010",
+    "question": "Was settlement setl_000007 delayed beyond the expected processing timeframe?",
+    "expected_answer_keywords": [
+      "delayed",
+      "7 days",
+      "timing",
+      "holiday"
+    ],
+    "relevant_record_ids": [
+      "setl_000007"
+    ],
+    "category": "timing_query",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q011",
+    "question": "Was settlement setl_000011 delayed beyond the expected processing timeframe?",
+    "expected_answer_keywords": [
+      "delayed",
+      "7 days",
+      "timing",
+      "holiday"
+    ],
+    "relevant_record_ids": [
+      "setl_000011"
+    ],
+    "category": "timing_query",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q012",
+    "question": "Was settlement setl_000044 delayed beyond the expected processing timeframe?",
+    "expected_answer_keywords": [
+      "delayed",
+      "7 days",
+      "timing",
+      "holiday"
+    ],
+    "relevant_record_ids": [
+      "setl_000044"
+    ],
+    "category": "timing_query",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q013",
+    "question": "Was settlement setl_000049 delayed beyond the expected processing timeframe?",
+    "expected_answer_keywords": [
+      "delayed",
+      "7 days",
+      "timing",
+      "holiday"
+    ],
+    "relevant_record_ids": [
+      "setl_000049"
+    ],
+    "category": "timing_query",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q014",
+    "question": "Does settlement setl_000003 have any discrepancy between the settlement amount and payment net totals?",
+    "expected_answer_keywords": [
+      "discrepancy",
+      "mismatch",
+      "chargeback",
+      "500"
+    ],
+    "relevant_record_ids": [
+      "setl_000003"
+    ],
+    "category": "anomaly_detection",
+    "difficulty": "hard"
+  },
+  {
+    "id": "q015",
+    "question": "Does settlement setl_000026 have any discrepancy between the settlement amount and payment net totals?",
+    "expected_answer_keywords": [
+      "discrepancy",
+      "mismatch",
+      "chargeback",
+      "500"
+    ],
+    "relevant_record_ids": [
+      "setl_000026"
+    ],
+    "category": "anomaly_detection",
+    "difficulty": "hard"
+  },
+  {
+    "id": "q016",
+    "question": "Does settlement setl_000037 have any discrepancy between the settlement amount and payment net totals?",
+    "expected_answer_keywords": [
+      "discrepancy",
+      "mismatch",
+      "chargeback",
+      "500"
+    ],
+    "relevant_record_ids": [
+      "setl_000037"
+    ],
+    "category": "anomaly_detection",
+    "difficulty": "hard"
+  },
+  {
+    "id": "q017",
+    "question": "Does settlement setl_000046 have any discrepancy between the settlement amount and payment net totals?",
+    "expected_answer_keywords": [
+      "discrepancy",
+      "mismatch",
+      "chargeback",
+      "500"
+    ],
+    "relevant_record_ids": [
+      "setl_000046"
+    ],
+    "category": "anomaly_detection",
+    "difficulty": "hard"
+  },
+  {
+    "id": "q018",
+    "question": "How many settlements were processed in the dataset?",
+    "expected_answer_keywords": [
+      "80",
+      "settlements"
+    ],
+    "relevant_record_ids": [],
+    "category": "aggregation",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q019",
+    "question": "How many settlements were processed in the dataset?",
+    "expected_answer_keywords": [
+      "80",
+      "settlements"
+    ],
+    "relevant_record_ids": [],
+    "category": "aggregation",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q020",
+    "question": "How many settlements were processed in the dataset?",
+    "expected_answer_keywords": [
+      "80",
+      "settlements"
+    ],
+    "relevant_record_ids": [],
+    "category": "aggregation",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q021",
+    "question": "How many settlements were processed in the dataset?",
+    "expected_answer_keywords": [
+      "80",
+      "settlements"
+    ],
+    "relevant_record_ids": [],
+    "category": "aggregation",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q022",
+    "question": "Which settlement has a higher payout amount between setl_000001 and setl_000008?",
+    "expected_answer_keywords": [
+      "setl_000001"
+    ],
+    "relevant_record_ids": [
+      "setl_000001",
+      "setl_000008"
+    ],
+    "category": "comparison_across_settlements",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q023",
+    "question": "Which settlement has a higher payout amount between setl_000002 and setl_000009?",
+    "expected_answer_keywords": [
+      "setl_000002"
+    ],
+    "relevant_record_ids": [
+      "setl_000002",
+      "setl_000009"
+    ],
+    "category": "comparison_across_settlements",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q024",
+    "question": "Which settlement has a higher payout amount between setl_000004 and setl_000010?",
+    "expected_answer_keywords": [
+      "setl_000004"
+    ],
+    "relevant_record_ids": [
+      "setl_000004",
+      "setl_000010"
+    ],
+    "category": "comparison_across_settlements",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q025",
+    "question": "Which settlement has a higher payout amount between setl_000005 and setl_000012?",
+    "expected_answer_keywords": [
+      "setl_000005"
+    ],
+    "relevant_record_ids": [
+      "setl_000005",
+      "setl_000012"
+    ],
+    "category": "comparison_across_settlements",
+    "difficulty": "medium"
+  }
+]
